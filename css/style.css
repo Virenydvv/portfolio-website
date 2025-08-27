@@ -499,3 +499,34 @@ body {
     display: block;
   }
 }
+/* ===== Hamburger Menu ===== */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Mobile Navbar */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* hidden by default */
+    flex-direction: column;
+    background: #111;
+    position: absolute;
+    top: 60px; /* below navbar */
+    right: 20px;
+    width: 200px;
+    padding: 15px;
+    border-radius: 8px;
+    gap: 12px;
+  }
+
+  .nav-links.active {
+    display: flex; /* show on click */
+  }
+
+  .hamburger {
+    display: block; /* show button only on mobile */
+  }
+}

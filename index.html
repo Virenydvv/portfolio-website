@@ -19,21 +19,20 @@
   <!-- ===================== NAVIGATION ===================== -->
   <header>
     <nav class="navbar">
-  <div class="logo">Viren Yadav</div>
+      <div class="logo">Viren Yadav</div>
 
-  <!-- HAMBURGER MENU BUTTON -->
-  <div class="hamburger">
-    <i class="fas fa-bars"></i>
-  </div>
+      <!-- Hamburger button -->
+      <div class="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
 
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
-
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
   <!-- ===================== MAIN CONTENT ===================== -->
@@ -104,63 +103,63 @@
   </script>
 
   <!-- Dynamic Typing Effect -->
-<script>
-  const roles = [
-    "Simplified Engineer",
-    "Web Developer",
-    "Problem Solver",
-    "Software Engineer"
-  ];
+  <script>
+    const roles = [
+      "Simplified Engineer",
+      "Web Developer",
+      "Problem Solver",
+      "Software Engineer"
+    ];
 
-  let roleIndex = 0;
-  let charIndex = 0;
-  let deleting = false;
-  const dynamicTextEl = document.querySelector(".animated-text");
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+    const dynamicTextEl = document.querySelector(".animated-text");
 
-  function typeEffect() {
-    let currentRole = roles[roleIndex];
+    function typeEffect() {
+      let currentRole = roles[roleIndex];
 
-    if (!deleting) {
-      dynamicTextEl.textContent = currentRole.substring(0, charIndex + 1);
-      charIndex++;
+      if (!deleting) {
+        dynamicTextEl.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
 
-      if (charIndex === currentRole.length) {
-        // Pause after full word
-        setTimeout(() => deleting = true, 1000);
+        if (charIndex === currentRole.length) {
+          setTimeout(() => deleting = true, 1000);
+        }
+      } else {
+        dynamicTextEl.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+
+        if (charIndex === 0) {
+          deleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+        }
       }
-    } else {
-      dynamicTextEl.textContent = currentRole.substring(0, charIndex - 1);
-      charIndex--;
 
-      if (charIndex === 0) {
-        deleting = false;
-        roleIndex = (roleIndex + 1) % roles.length;
-      }
+      const speed = deleting ? 80 : 120;
+      setTimeout(typeEffect, speed);
     }
 
-    // Adjust typing/deleting speed
-    const speed = deleting ? 80 : 120;
-    setTimeout(typeEffect, speed);
-  }
+    typeEffect();
+  </script>
 
-  // Start typing effect
-  typeEffect();
+  <!-- Navbar Toggle Script -->
+  <script>
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
 
-  // ===== Navbar Toggle for Mobile =====
-  function toggleMenu() {
-    document.querySelector(".nav-links").classList.toggle("active");
-  }
-</script>
-<script>
-  // Hamburger toggle script
-  const hamburger = document.querySelector(".hamburger");
-  const navLinks = document.querySelector(".nav-links");
+    // Toggle menu when hamburger is clicked
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
 
-  hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-  });
-</script>
-
+    // Close menu when a link is clicked
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+  </script>
 
 </body>
 </html>
