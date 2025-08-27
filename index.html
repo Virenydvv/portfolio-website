@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Viren Yadav | Portfolio</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Viren Yadav</div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===================== MAIN CONTENT ===================== -->
+  <section class="three-columns">
+
+    <!-- ===== Column 1: Profile Section ===== -->
+    <div class="column profile-section">
+      <img src="assets/image/Profile.webp" alt="Viren Yadav Profile Photo">
+      <div class="animated-text">Simplified Engineer</div>
+    </div>
+
+    <!-- ===== Column 2: Hero Section ===== -->
+    <div class="column hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <h1>Hello, I'm <span class="highlight">Viren Yadav</span></h1>
+        <p>
+          I’m a <strong>Web Developer</strong> skilled in building user-friendly websites.<br>
+          I'm also passionate about <strong>Software Development</strong> — always eager to solve real-world problems using code.
+        </p>
+        <a href="projects.html" class="btn">Explore My Projects</a>
+      </div>
+    </div>
+
+    <!-- ===== Column 3: Services Section ===== -->
+    <div class="column services">
+      <h2>What I Do</h2>
+      <div class="service-cards">
+        <div class="card">
+          <i class="fas fa-code"></i>
+          <h3>Web Development</h3>
+          <p>Building responsive, modern, and user-friendly websites using HTML, CSS, and JavaScript.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-laptop-code"></i>
+          <h3>Software Development</h3>
+          <p>Developing scalable software solutions with Java, Python, and MySQL to solve real-world problems.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-lightbulb"></i>
+          <h3>Problem Solving</h3>
+          <p>Solving coding challenges and optimizing algorithms for better performance and efficiency.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===================== JAVASCRIPT ===================== -->
+
+  <!-- Hero Image Slider -->
+  <script>
+    const heroBg = document.querySelector(".hero-bg");
+    const images = [
+      "assets/image/hero1.jpg",
+      "assets/image/hero2.jpg",
+      "assets/image/hero3.jpg"
+    ];
+    let currentImage = 0;
+
+    function changeBackground() {
+      heroBg.style.backgroundImage = `url('${images[currentImage]}')`;
+      currentImage = (currentImage + 1) % images.length;
+    }
+
+    changeBackground();
+    setInterval(changeBackground, 5000); // Change every 5 seconds
+  </script>
+
+  <!-- Dynamic Typing Effect -->
+<script>
+  const roles = [
+    "Simplified Engineer",
+    "Web Developer",
+    "Problem Solver",
+    "Software Engineer"
+  ];
+
+  let roleIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+  const dynamicTextEl = document.querySelector(".animated-text");
+
+  function typeEffect() {
+    let currentRole = roles[roleIndex];
+
+    if (!deleting) {
+      dynamicTextEl.textContent = currentRole.substring(0, charIndex + 1);
+      charIndex++;
+
+      if (charIndex === currentRole.length) {
+        // Pause after full word
+        setTimeout(() => deleting = true, 1000);
+      }
+    } else {
+      dynamicTextEl.textContent = currentRole.substring(0, charIndex - 1);
+      charIndex--;
+
+      if (charIndex === 0) {
+        deleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+      }
+    }
+
+    // Adjust typing/deleting speed
+    const speed = deleting ? 80 : 120;
+    setTimeout(typeEffect, speed);
+  }
+
+  // Start typing effect
+  typeEffect();
+</script>
+
+</body>
+</html>
